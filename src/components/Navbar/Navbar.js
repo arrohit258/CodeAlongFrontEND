@@ -13,7 +13,7 @@ const  Navbar=({language,setLanguage,code,setOutput,output,input})=> {
    
  
 
-    axios.post('/getOutput',{
+    axios.post('https://codelongserver.herokuapp.com/getOutput',{
      
       code:code,
       language:language,
