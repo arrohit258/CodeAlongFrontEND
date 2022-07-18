@@ -56,6 +56,7 @@ const File = ({code,setCode}) => {
 useEffect(()=>{
   if(!socket )return null
   socket.on('recieve-code',({EditorId,code})=>{
+   // console.log(code,"33");
    if(id!==EditorId){
      remote.current=true;
      setCode(code)
@@ -64,7 +65,10 @@ useEffect(()=>{
 })
 
  const handleChange=(e)=>{
-if(!remote.current &&/\S/.test(e)){
+  //console.log("KeyUped");
+  //console.log("Changed to",e)
+if(!remote.current){
+  //if(!remote.current &&/\S/.test(e)){
   if(!socket || remote.current)return null
   socket.emit('send-code',{
     EditorId:id,

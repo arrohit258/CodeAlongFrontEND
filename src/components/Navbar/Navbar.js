@@ -9,8 +9,9 @@ const  Navbar=({language,setLanguage,code,setOutput,output,input})=> {
   const handleClick=()=>{
     setOutput('Loading...')
     
-        
+        //https://codelongserver.herokuapp.com
    
+       // axios.post('https://codelongserver.herokuapp.com/getOutput',{
  
 
     axios.post('https://codelongserver.herokuapp.com/getOutput',{
