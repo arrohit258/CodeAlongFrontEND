@@ -85,7 +85,7 @@ if(!remote.current){
  }
     
     return (
-      <AceEditor
+     /*<AceEditor
      // ref={editor}
       className="files"
       mode="java"
@@ -96,23 +96,25 @@ if(!remote.current){
       name="UNIQUE_ID_OF_DIV"
       editorProps={{ $blockScrolling: true }}
     />
-    /*
+    */
+    
     <CodeMirror
      value={code}
      theme={xcodeDark}
      height="500px"
-     extensions={[javascript]}
+     //extensions={[javascript]}
     onChange={(value)=>{
       if(code!=value)
        setCode(value);
      }}
     onKeyUp={() => {
     handleChange(code);
-    console.log("HI");
+    console.log("Hi");
     // console.log('value in editor is', editorValue);
     }}
     />
-    */
+    
+    
 
     )
 }
