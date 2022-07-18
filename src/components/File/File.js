@@ -60,6 +60,7 @@ const File = ({code,setCode}) => {
 
 // },[code])
 useEffect(()=>{
+  
   if(!socket )return null
   socket.on('recieve-code',({EditorId,code})=>{
    // console.log(code,"33");
@@ -85,13 +86,16 @@ if(!remote.current){
  }
     
     return (
-     /*<AceEditor
+    /* <AceEditor
      // ref={editor}
       className="files"
       mode="java"
       theme="monokai"
       width="100%"
-      onChange={(e)=>{handleChange(e)}}
+      onChange={(e)=>{
+
+        handleChange(e)
+      }}
       value={code}
       name="UNIQUE_ID_OF_DIV"
       editorProps={{ $blockScrolling: true }}
