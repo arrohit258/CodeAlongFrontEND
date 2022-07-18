@@ -2,6 +2,7 @@ import React,{useState,useEffect,useRef} from 'react'
 import{ useLocation} from 'react-router-dom'
 import queryString from 'query-string'
 import AceEditor from "react-ace";
+import CodeMirror from '@uiw/react-codemirror';
 
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-monokai";
@@ -10,6 +11,11 @@ import { Form, TextArea } from 'semantic-ui-react'
 import io from 'socket.io-client'
 import "semantic-ui-css/semantic.min.css"
 import './File.css'
+import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode';
+import { javascript } from '@codemirror/lang-javascript';
+//import {cpp} from '@codemirror/lang-cpp'
+//import { langs } from '@uiw/codemirror-extensions-langs';
+
 const SAVE_INTERVAL_MS=2000
 //const ENDPOINT='http://localhost:5000/'
 const ENDPOINT='https://codelongserver.herokuapp.com/'
@@ -57,8 +63,9 @@ useEffect(()=>{
   if(!socket )return null
   socket.on('recieve-code',({EditorId,code})=>{
    // console.log(code,"33");
-   if(id!==EditorId){
+   if(id!=EditorId){
      remote.current=true;
+    //if(code!==)
      setCode(code)
    }remote.current=false;
   })
@@ -89,6 +96,24 @@ if(!remote.current){
       name="UNIQUE_ID_OF_DIV"
       editorProps={{ $blockScrolling: true }}
     />
+    /*
+    <CodeMirror
+     value={code}
+     theme={xcodeDark}
+     height="500px"
+     extensions={[javascript]}
+    onChange={(value)=>{
+      if(code!=value)
+       setCode(value);
+     }}
+    onKeyUp={() => {
+    handleChange(code);
+    console.log("HI");
+    // console.log('value in editor is', editorValue);
+    }}
+    />
+    */
+
     )
 }
 
